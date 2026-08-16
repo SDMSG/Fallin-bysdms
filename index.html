@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Love</title>
+  <style>
+    :root {
+      --bg1: #fff1f7;
+      --bg2: #ffe5f1;
+      --bg3: #fff4d6;
+      --card: rgba(255, 255, 255, 0.72);
+      --pink: #ff4d8d;
+      --pink-deep: #d81b60;
+      --purple: #8f6bff;
+      --rose: #ff7aa9;
+      --text: #4d1d36;
+      --subtext: rgba(77, 29, 54, 0.86);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      color: var(--text);
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .floating-hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 0.5;
+    }
+
+    .floating-hearts span {
+      position: absolute;
+      font-size: clamp(1.2rem, 2vw, 2rem);
+      animation: floatUp 9s linear infinite;
+      opacity: 0.9;
+    }
+
+    .floating-hearts span:nth-child(1) { left: 10%; top: 80%; animation-delay: 0s; }
+    .floating-hearts span:nth-child(2) { left: 20%; top: 30%; animation-delay: 1s; }
+    .floating-hearts span:nth-child(3) { left: 35%; top: 65%; animation-delay: 2s; }
+    .floating-hearts span:nth-child(4) { left: 55%; top: 20%; animation-delay: 3s; }
+    .floating-hearts span:nth-child(5) { left: 70%; top: 70%; animation-delay: 4s; }
+    .floating-hearts span:nth-child(6) { left: 80%; top: 35%; animation-delay: 5s; }
+    .floating-hearts span:nth-child(7) { left: 90%; top: 60%; animation-delay: 6s; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(25px) scale(0.9); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-120px) scale(1.15); opacity: 0; }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      width: min(92vw, 760px);
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 32px;
+      box-shadow: 0 24px 70px rgba(204, 76, 133, 0.18);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      padding: 36px 24px 28px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: rgba(255, 77, 141, 0.1);
+      color: var(--pink-deep);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1;
+      margin: 0;
+      color: var(--pink-deep);
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .subtitle {
+      max-width: 600px;
+      margin: 18px auto 26px;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.7;
+      color: var(--subtext);
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 14px 22px;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(255, 77, 141, 0.28);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 18px 30px rgba(255, 77, 141, 0.35);
+      filter: brightness(1.04);
+    }
+
+    .message {
+      margin-top: 26px;
+      min-height: 74px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255, 77, 141, 0.15);
+      border-radius: 18px;
+      padding: 16px 18px;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 700;
+      color: var(--pink-deep);
+    }
+
+    .signature {
+      margin-top: 18px;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(77, 29, 54, 0.7);
+    }
+
+    @media (max-width: 560px) {
+      .card {
+        padding: 28px 18px 20px;
+      }
+
+      .buttons {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-hearts" aria-hidden="true">
+    <span>💗</span>
+    <span>💞</span>
+    <span>💕</span>
+    <span>💖</span>
+    <span>💗</span>
+    <span>💞</span>
+    <span>💖</span>
+  </div>
+
+  <main class="card">
+    <div class="badge">My forever favorite</div>
+    <h1 class="hero">💖 For You</h1>
+    <p class="subtitle">
+      You are the sweetest part of my life, the calm in my chaos, and the reason my heart feels so full.
+      I love you more than words can say, and every day with you feels like a beautiful little miracle.
+    </p>
+
+    <div class="buttons">
+      <button type="button" data-message="I love you more than words can say. ❤️">I love you</button>
+      <button type="button" data-message="You are my favorite person and my whole heart. 💞">My favorite person</button>
+      <button type="button" data-message="You make every ordinary day feel meaningful and magical. ✨">Always</button>
+      <button type="button" data-message="I choose you, every day, in every way, forever. 🌙">Forever</button>
+    </div>
+
+    <div id="message" class="message">Click any button and let my heart speak for me.</div>
+    <div class="signature">Made with all my love</div>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('button');
+    const messageBox = document.getElementById('message');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        messageBox.textContent = button.dataset.message;
+      });
+    });
+  </script>
+</body>
+</html>
+
